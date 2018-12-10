@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds">
+
+    <property name="DEV_HOME" value="c:/logs" />
+
+    <appender name="file" class="ch.qos.logback.core.FileAppender">
+        <file>${DEV_HOME}/debug.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>%date %level [%thread] %logger{10} [%file:%line] %msg%n</Pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>${DEV_HOME}/archived/debug.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.epam.rd.june2018.session" level="error"/>
+
+    <logger name="com.epam.rd.june2018.session" level="TRACE"
+            additivity="false">
+        <appender-ref ref="console" />
+    </logger>
+
+    <logger name="com.epam.rd.june2018.session" level="debug" additivity="false">
+        <appender-ref ref="file" />
+    </logger>
+
+    <root level="error">
+        <appender-ref ref="file" />
+    </root>
+
+    <root level="info">
+        <appender-ref ref="file"/>
+        <appender-ref ref="console"/>
+    </root>
+    <root level="TRACE">
+        <appender-ref ref="console"/>
+    </root>
+    <root level="warning">
+        <appender-ref ref="file"/>
+    </root>
+    <root level="error">
+        <appender-ref ref="file"/>
+    </root>
+</configuration>

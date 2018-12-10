@@ -1,0 +1,183 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="create_user" author ="db@user">
+        <createTable tableName="users">
+            <column name="id" type="int" autoIncrement="true" >
+                <constraints primaryKey="true" nullable="false" unique="true" />
+            </column>
+            <column name="name" type="nvarchar(100)">
+                <constraints nullable="false" />
+            </column>
+            <column name="surname" type="nvarchar(100)">
+                <constraints nullable="false" />
+            </column>
+            <column name="password" type="nvarchar(100)">
+                <constraints nullable="false" />
+            </column>
+            <column name="age" type="int">
+                <constraints nullable="false" />
+            </column>
+            <column name="email" type="nvarchar(120)">
+                <constraints nullable="false" unique="true" />
+            </column>
+
+        </createTable>
+        <createTable tableName="roles">
+            <column name="id" type="int" autoIncrement="true" >
+                <constraints primaryKey="true" nullable="false" unique="true" />
+            </column>
+            <column name="name" type="nvarchar(70)">
+                <constraints nullable="false" unique="true" />
+            </column>
+        </createTable>
+        <createTable tableName="users_roles">
+            <column name="id" type="int" autoIncrement="true" >
+                <constraints primaryKey="true" nullable="false" unique="true" />
+            </column>
+            <column name="user_id" type="int">
+                <constraints nullable="false" />
+            </column>
+            <column name="role_id" type="int">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <addForeignKeyConstraint constraintName="fk_roles"
+                                 baseTableName="users_roles" baseColumnNames="role_id"
+                                referencedTableName="roles" referencedColumnNames="id"
+                                 onDelete="CASCADE"/>
+        <addForeignKeyConstraint constraintName="fk_users"
+                                 baseTableName="users_roles" baseColumnNames="user_id"
+                                 referencedTableName="users" referencedColumnNames="id"
+                                 onDelete="CASCADE"/>
+        <addUniqueConstraint tableName="users_roles" columnNames="user_id, role_id" constraintName="const_user_role"/>
+
+        <createTable tableName="apartment_statuses">
+            <column name="id" type="int" autoIncrement="true" >
+                <constraints primaryKey="true" nullable="false" unique="true" />
+            </column>
+            <column name="name" type="nvarchar(70)">
+                <constraints nullable="false" unique="true" />
+            </column>
+        </createTable>
+
+        <createTable tableName="apartment_classes">
+            <column name="id" type="int" autoIncrement="true" >
+                <constraints primaryKey="true" nullable="false" unique="true" />
+            </column>
+            <column name="name" type="nvarchar(70)">
+                <constraints nullable="false" unique="true" />
+            </column>
+        </createTable>
+
+        <createTable tableName="apartments">
+            <column name="id" type="int" autoIncrement="true" >
+                <constraints primaryKey="true" nullable="false" unique="true" />
+            </column>
+            <column name="name" type="nvarchar(100)">
+                <constraints nullable="false" />
+            </column>
+            <column name="price" type="int" >
+                <constraints nullable="false" />
+            </column>
+            <column name="capacity" type="int" >
+                <constraints nullable="false" />
+            </column>
+            <column name="apartment_class_id" type="int" >
+                <constraints nullable="false" />
+            </column>
+            <column name="apartment_status_id" type="int" >
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint constraintName="fk_apartment_apartmentclass"
+                                 baseTableName="apartments" baseColumnNames="apartment_class_id"
+                                 referencedTableName="apartment_classes" referencedColumnNames="id" onDelete="CASCADE"  onUpdate="CASCADE"/>
+        <addForeignKeyConstraint constraintName="fk_apartment_apartmentstatus"
+                                 baseTableName="apartments" baseColumnNames="apartment_status_id"
+                                 referencedTableName="apartment_statuses" referencedColumnNames="id" onDelete="CASCADE" onUpdate="CASCADE"/>
+
+        <createTable tableName="booking_requests">
+            <column name="id" type="int" autoIncrement="true" >
+                <constraints primaryKey="true" nullable="false" unique="true" />
+            </column>
+            <column name="capacity" type="int" >
+                <constraints nullable="true" />
+            </column>
+            <column name="apartment_class_id" type="int" >
+                <constraints nullable="true" />
+            </column>
+            <column name="arrival_date" type="date" >
+                <constraints nullable="false" />
+            </column>
+            <column name="departure_date" type="date" >
+                <constraints nullable="false" />
+            </column>
+            <column name="user_id" type="int" >
+                <constraints nullable="false" />
+            </column>
+            <column name="apartment_id" type="int" >
+                <constraints nullable="true" />
+            </column>
+            <column name="is_accepted" type="boolean" >
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint constraintName="fk_bookingrequests_apartmentclasses"
+                                 baseTableName="booking_requests" baseColumnNames="apartment_class_id"
+                                 referencedTableName="apartment_classes" referencedColumnNames="id" onDelete="CASCADE"/>
+        <addForeignKeyConstraint constraintName="fk_bookingrequests_users"
+                                 baseTableName="booking_requests" baseColumnNames="user_id"
+                                 referencedTableName="users" referencedColumnNames="id" onDelete="CASCADE"/>
+        <addForeignKeyConstraint constraintName="fk_bookingrequests_apartments"
+                                 baseTableName="booking_requests" baseColumnNames="apartment_id"
+                                 referencedTableName="apartments" referencedColumnNames="id" onDelete="CASCADE"/>
+
+        <createTable tableName="bills">
+            <column name="id" type="int" autoIncrement="true" >
+                <constraints primaryKey="true" nullable="false" unique="true" />
+            </column>
+            <column name="price" type="int" >
+                <constraints nullable="false" />
+            </column>
+            <column name="is_paid" type="boolean" >
+                <constraints nullable="false" />
+            </column>
+            <column name="billed_date" type="date" >
+                <constraints nullable="false" />
+            </column>
+            <column name="paid_date" type="date" >
+                <constraints nullable="true" />
+            </column>
+            <column name="user_id" type="int" >
+                <constraints nullable="false" />
+            </column>
+            <column name="booking_request_id" type="int" >
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint constraintName="fk_bills_users"
+                                 baseTableName="bills" baseColumnNames="user_id"
+                                 referencedTableName="users" referencedColumnNames="id" />
+        <addForeignKeyConstraint constraintName="fk_bills_bookingrequests"
+                                 baseTableName="bills" baseColumnNames="booking_request_id"
+                                 referencedTableName="booking_requests" referencedColumnNames="id" onDelete="CASCADE" />
+    </changeSet>
+    <changeSet id="tag-1.0" author="db@user">
+        <tagDatabase tag="1.0" />
+    </changeSet>
+
+</databaseChangeLog>
+
+        <!--private Integer id;-->
+        <!--private String name;-->
+        <!--private String password;-->
+        <!--private String surname;-->
+        <!--private Integer age;-->
+        <!--private String email;-->

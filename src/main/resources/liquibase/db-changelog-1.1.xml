@@ -1,0 +1,318 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <property name="now" value="sysdate" dbms="oracle"/>
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="now" value="now()" dbms="mariadb"/>
+    <property name="now" value="now()" dbms="postgresql"/>
+    <property name="now" value="CURDATE()" dbms="h2"/>
+
+    <changeSet id="insert_data" author="db@user">
+        <insert tableName="roles">
+            <column name="id" valueNumeric="1" />
+            <column name="name" valueNumeric="'admin'" />
+        </insert>
+        <insert tableName="roles">
+            <column name="id" valueNumeric="2" />
+            <column name="name" valueNumeric="'client'" />
+        </insert>
+        <insert tableName="roles">
+            <column name="id" valueNumeric="3" />
+            <column name="name" valueNumeric="'manager'" />
+        </insert>
+        <insert tableName="users">
+            <column name="id" valueNumeric="1" />
+            <column name="name" valueNumeric="'Vasia'" />
+            <column name="surname" valueNumeric="'adminin'" />
+            <column name="password" valueNumeric="'admin'" />
+            <column name="email" valueNumeric="'admin1@gmail.com'" />
+            <column name="age" valueNumeric="'18'" />
+        </insert>
+        <insert tableName="users">
+            <column name="id" valueNumeric="2" />
+            <column name="name" valueNumeric="'Petia'" />
+            <column name="surname" valueNumeric="'adminin'" />
+            <column name="password" valueNumeric="'admin'" />
+            <column name="email" valueNumeric="'admin2@gmail.com'" />
+            <column name="age" valueNumeric="'18'" />
+        </insert>
+        <insert tableName="users">
+            <column name="id" valueNumeric="3" />
+            <column name="name" valueNumeric="'Leha'" />
+            <column name="surname" valueNumeric="'adminin'" />
+            <column name="password" valueNumeric="'admin'" />
+            <column name="email" valueNumeric="'admin3@gmail.com'" />
+            <column name="age" valueNumeric="'18'" />
+        </insert>
+        <insert tableName="users_roles">
+            <column name="id" valueNumeric="1" />
+            <column name="user_id" valueNumeric="1" />
+            <column name="role_id" valueNumeric="1" />
+        </insert>
+        <insert tableName="users_roles">
+            <column name="id" valueNumeric="2" />
+            <column name="user_id" valueNumeric="1" />
+            <column name="role_id" valueNumeric="2" />
+        </insert>
+        <insert tableName="users_roles">
+            <column name="id" valueNumeric="3" />
+            <column name="user_id" valueNumeric="2" />
+            <column name="role_id" valueNumeric="2" />
+        </insert>
+        <insert tableName="users_roles">
+            <column name="id" valueNumeric="4" />
+            <column name="user_id" valueNumeric="3" />
+            <column name="role_id" valueNumeric="3" />
+        </insert>
+
+        <insert tableName="apartment_statuses">
+            <column name="id" valueNumeric="1" />
+            <column name="name" valueNumeric="'free'" />
+        </insert>
+        <insert tableName="apartment_statuses">
+            <column name="id" valueNumeric="2" />
+            <column name="name" valueNumeric="'booked'" />
+        </insert>
+        <insert tableName="apartment_statuses">
+            <column name="id" valueNumeric="3" />
+            <column name="name" valueNumeric="'occupied'" />
+        </insert>
+        <insert tableName="apartment_statuses">
+            <column name="id" valueNumeric="4" />
+            <column name="name" valueNumeric="'unavailable'" />
+        </insert>
+
+        <insert tableName="apartment_classes">
+            <column name="id" valueNumeric="1" />
+            <column name="name" valueNumeric="'economy'" />
+        </insert>
+        <insert tableName="apartment_classes">
+            <column name="id" valueNumeric="2" />
+            <column name="name" valueNumeric="'standard'" />
+        </insert>
+        <insert tableName="apartment_classes">
+            <column name="id" valueNumeric="3" />
+            <column name="name" valueNumeric="'semilux'" />
+        </insert>
+        <insert tableName="apartment_classes">
+            <column name="id" valueNumeric="4" />
+            <column name="name" valueNumeric="'luxury'" />
+        </insert>
+        <insert tableName="apartment_classes">
+            <column name="id" valueNumeric="5" />
+            <column name="name" valueNumeric="'business'" />
+        </insert>
+        <insert tableName="apartment_classes">
+            <column name="id" valueNumeric="6" />
+            <column name="name" valueNumeric="'elites'" />
+        </insert>
+
+        <insert tableName="apartments">
+            <column name="id" valueNumeric="1" />
+            <column name="name" valueNumeric="'Left facade Prime room'" />
+            <column name="price" valueNumeric="20000" />
+            <column name="capacity" valueNumeric="3" />
+            <column name="apartment_class_id" valueNumeric="3" />
+            <column name="apartment_status_id" valueNumeric="1" />
+        </insert>
+        <insert tableName="apartments">
+            <column name="id" valueNumeric="2" />
+            <column name="name" valueNumeric="'Right facade Prime room'" />
+            <column name="price" valueNumeric="15000" />
+            <column name="capacity" valueNumeric="2" />
+            <column name="apartment_class_id" valueNumeric="2" />
+            <column name="apartment_status_id" valueNumeric="2" />
+        </insert>
+        <insert tableName="apartments">
+            <column name="id" valueNumeric="3" />
+            <column name="name" valueNumeric="'Middle facade Prime room'" />
+            <column name="price" valueNumeric="25000" />
+            <column name="capacity" valueNumeric="4" />
+            <column name="apartment_class_id" valueNumeric="4" />
+            <column name="apartment_status_id" valueNumeric="3" />
+        </insert>
+        <insert tableName="apartments">
+            <column name="id" valueNumeric="4" />
+            <column name="name" valueNumeric="'Bottom facade room'" />
+            <column name="price" valueNumeric="20000" />
+            <column name="capacity" valueNumeric="1" />
+            <column name="apartment_class_id" valueNumeric="1" />
+            <column name="apartment_status_id" valueNumeric="1" />
+        </insert>
+        <insert tableName="apartments">
+            <column name="id" valueNumeric="5" />
+            <column name="name" valueNumeric="'Facade room'" />
+            <column name="price" valueNumeric="22000" />
+            <column name="capacity" valueNumeric="3" />
+            <column name="apartment_class_id" valueNumeric="2" />
+            <column name="apartment_status_id" valueNumeric="1" />
+        </insert>
+        <insert tableName="apartments">
+            <column name="id" valueNumeric="6" />
+            <column name="name" valueNumeric="'Top facade room'" />
+            <column name="price" valueNumeric="23000" />
+            <column name="capacity" valueNumeric="2" />
+            <column name="apartment_class_id" valueNumeric="4" />
+            <column name="apartment_status_id" valueNumeric="1" />
+        </insert>
+
+        <insert tableName="booking_requests">
+            <column name="id" valueNumeric="1" />
+            <column name="capacity" valueNumeric="2" />
+            <column name="apartment_class_id" valueNumeric="3" />
+            <column name="arrival_date" valueDate="2018-09-10" />
+            <column name="departure_date" valueDate="2018-09-15" />
+            <column name="user_id" valueNumeric="1" />
+            <column name="apartment_id" valueNumeric="1" />
+            <column name="is_accepted" valueBoolean="true" />
+        </insert>
+        <insert tableName="booking_requests">
+            <column name="id" valueNumeric="2" />
+            <column name="capacity" valueNumeric="3" />
+            <column name="apartment_class_id" valueNumeric="2" />
+            <column name="arrival_date" valueDate="2018-09-10" />
+            <column name="departure_date" valueDate="2018-09-15" />
+            <column name="user_id" valueNumeric="2" />
+            <column name="apartment_id" valueNumeric="2" />
+            <column name="is_accepted" valueBoolean="true" />
+        </insert>
+        <insert tableName="booking_requests">
+            <column name="id" valueNumeric="3" />
+            <column name="capacity" valueNumeric="2" />
+            <column name="apartment_class_id" valueNumeric="3" />
+            <column name="arrival_date" valueDate="2018-09-10" />
+            <column name="departure_date" valueDate="2018-09-15" />
+            <column name="user_id" valueNumeric="1" />
+            <column name="apartment_id" valueNumeric="null" />
+            <column name="is_accepted" valueBoolean="false" />
+        </insert>
+        <insert tableName="booking_requests">
+            <column name="id" valueNumeric="4" />
+            <column name="capacity" valueNumeric="3" />
+            <column name="apartment_class_id" valueNumeric="2" />
+            <column name="arrival_date" valueDate="2018-09-05" />
+            <column name="departure_date" valueDate="2018-09-10" />
+            <column name="user_id" valueNumeric="2" />
+            <column name="apartment_id" valueNumeric="2" />
+            <column name="is_accepted" valueBoolean="true" />
+        </insert>
+
+        <insert tableName="bills">
+            <column name="id" valueNumeric="1" />
+            <column name="price" valueNumeric="50000" />
+            <column name="is_paid" valueBoolean="false" />
+            <column name="billed_date" valueDate="2017-08-09" />
+            <column name="paid_date" valueDate="null" />
+            <column name="user_id" valueNumeric="1" />
+            <column name="booking_request_id" valueNumeric="1" />
+        </insert>
+        <insert tableName="bills">
+            <column name="id" valueNumeric="2" />
+            <column name="price" valueNumeric="55000" />
+            <column name="is_paid" valueBoolean="true" />
+            <column name="billed_date" valueDate="2017-09-09" />
+            <column name="paid_date" valueDate="2017-09-10" />
+            <column name="user_id" valueNumeric="2" />
+            <column name="booking_request_id" valueNumeric="2" />
+        </insert>
+        <insert tableName="bills">
+            <column name="id" valueNumeric="3" />
+            <column name="price" valueNumeric="40000" />
+            <column name="is_paid" valueBoolean="false" />
+            <column name="billed_date" valueDate="${now}" />
+            <column name="paid_date" valueDate="null" />
+            <column name="user_id" valueNumeric="3" />
+            <column name="booking_request_id" valueNumeric="3" />
+        </insert>
+
+
+        <insert tableName="users">
+            <column name="id" valueNumeric="40" />
+            <column name="name" valueNumeric="'Станислав'" />
+            <column name="surname" valueNumeric="'Приходько'" />
+            <column name="password" valueNumeric="'d782a23ba7dc085babf3d0a86e7b82a856311024829147210889186'" />
+            <column name="email" valueNumeric="'prykhodko.s.i@gmail.com'" />
+            <column name="age" valueNumeric="'20'" />
+        </insert>
+        <insert tableName="users_roles">
+            <column name="id" valueNumeric="40" />
+            <column name="user_id" valueNumeric="40" />
+            <column name="role_id" valueNumeric="1" />
+        </insert>
+        <insert tableName="users_roles">
+            <column name="id" valueNumeric="41" />
+            <column name="user_id" valueNumeric="40" />
+            <column name="role_id" valueNumeric="2" />
+        </insert>
+        <insert tableName="users_roles">
+            <column name="id" valueNumeric="42" />
+            <column name="user_id" valueNumeric="40" />
+            <column name="role_id" valueNumeric="3" />
+        </insert>
+        <insert tableName="booking_requests">
+            <column name="id" valueNumeric="40" />
+            <column name="capacity" valueNumeric="2" />
+            <column name="apartment_class_id" valueNumeric="2" />
+            <column name="arrival_date" valueDate="2018-09-05" />
+            <column name="departure_date" valueDate="2018-09-10" />
+            <column name="user_id" valueNumeric="40" />
+            <column name="apartment_id" valueNumeric="2" />
+            <column name="is_accepted" valueBoolean="true" />
+        </insert>
+        <insert tableName="booking_requests">
+            <column name="id" valueNumeric="41" />
+            <column name="capacity" valueNumeric="3" />
+            <column name="apartment_class_id" valueNumeric="3" />
+            <column name="arrival_date" valueDate="2018-09-08" />
+            <column name="departure_date" valueDate="2018-09-11" />
+            <column name="user_id" valueNumeric="40" />
+            <column name="apartment_id" valueNumeric="2" />
+            <column name="is_accepted" valueBoolean="false" />
+        </insert>
+        <insert tableName="booking_requests">
+            <column name="id" valueNumeric="42" />
+            <column name="capacity" valueNumeric="1" />
+            <column name="apartment_class_id" valueNumeric="1" />
+            <column name="arrival_date" valueDate="2018-09-07" />
+            <column name="departure_date" valueDate="2018-09-10" />
+            <column name="user_id" valueNumeric="40" />
+            <column name="apartment_id" valueNumeric="null" />
+            <column name="is_accepted" valueBoolean="false" />
+        </insert>
+
+        <insert tableName="bills">
+            <column name="id" valueNumeric="40" />
+            <column name="price" valueNumeric="50000" />
+            <column name="is_paid" valueBoolean="false" />
+            <column name="billed_date" valueDate="2017-08-09" />
+            <column name="paid_date" valueDate="null" />
+            <column name="user_id" valueNumeric="40" />
+            <column name="booking_request_id" valueNumeric="40" />
+        </insert>
+        <insert tableName="bills">
+            <column name="id" valueNumeric="41" />
+            <column name="price" valueNumeric="60000" />
+            <column name="is_paid" valueBoolean="false" />
+            <column name="billed_date" valueDate="2017-08-09" />
+            <column name="paid_date" valueDate="null" />
+            <column name="user_id" valueNumeric="40" />
+            <column name="booking_request_id" valueNumeric="41" />
+        </insert>
+        <insert tableName="bills">
+            <column name="id" valueNumeric="42" />
+            <column name="price" valueNumeric="55000" />
+            <column name="is_paid" valueBoolean="false" />
+            <column name="billed_date" valueDate="2017-08-09" />
+            <column name="paid_date" valueDate="null" />
+            <column name="user_id" valueNumeric="40" />
+            <column name="booking_request_id" valueNumeric="42" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="tag-1.1" author="db@user">
+        <tagDatabase tag="1.1" />
+    </changeSet>
+</databaseChangeLog>
