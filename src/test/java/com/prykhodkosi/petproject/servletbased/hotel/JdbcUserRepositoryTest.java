@@ -35,10 +35,11 @@ public class JdbcUserRepositoryTest {
         //GIVEN
         UserSpecificationAll userSpecificationAll = new UserSpecificationAll();
         Collection<User> expected = Arrays.asList(
-                new User(1, "Vasia", "adminin", "admin", "admin1@gmail.com", 18),
-                new User(2, "Petia", "adminin", "admin", "admin2@gmail.com", 18),
-                new User(3, "Leha", "adminin", "admin", "admin3@gmail.com", 18),
-                new User(40,	"Станислав","Приходько","56311024829147210889186","prykhodko.s.i@gmail.com",20));
+                new User(1, "Vasia", "adminin", "a60d0091facdb884c7a923e04e95919256148302514591024242842515439190", "admin1@gmail.com", 18),
+                new User(2, "Client", "Clientov", "a60d0091facdb884c7a923e04e95919256148302514591024242842515439190", "client@gmail.com", 18),
+                new User(3, "Leha", "adminin", "a60d0091facdb884c7a923e04e95919256148302514591024242842515439190", "admin3@gmail.com", 18),
+                new User(40,	"Станислав","Приходько","a60d0091facdb884c7a923e04e95919256148302514591024242842515439190","prykhodko.s.i@gmail.com",20),
+                new User(41,	"Manager","Managerov","a60d0091facdb884c7a923e04e95919256148302514591024242842515439190","manager@gmail.com",28));
 
         //WHEN
         Collection<User> actual = repository.read(userSpecificationAll);
@@ -52,7 +53,12 @@ public class JdbcUserRepositoryTest {
     public void readByIdTest(){
         //GIVEN
         UserSpecificationAll userSpecificationAll = new UserSpecificationAll();
-        User user = new User(1, "Vasia", "adminin", "admin", "admin1@gmail.com", 18);
+        User user = new User(1,
+                "Vasia",
+                "adminin",
+                "a60d0091facdb884c7a923e04e95919256148302514591024242842515439190",
+                "admin1@gmail.com",
+                18);
         Collection<User> expected = Arrays.asList(user);
 
         //WHEN
@@ -66,7 +72,12 @@ public class JdbcUserRepositoryTest {
     @Test
     public void createTest(){
         //GIVEN
-        User expectedUser = new User(41,"Zhenia", "adminin", "admin", "admin4@gmail.com", 18);
+        User expectedUser = new User(42,
+                "Zhenia",
+                "adminin",
+                "a60d0091facdb884c7a923e04e95919256148302514591024242842515439190",
+                "admin4@gmail.com",
+                18);
 
         //WHEN
         Boolean actual = repository.create(expectedUser);
@@ -80,7 +91,7 @@ public class JdbcUserRepositoryTest {
     @Test
     public void updateTest(){
         //GIVEN
-        User expectedUser = new User(2,"Dima", "adminin", "admin", "admin2@gmail.com", 18);
+        User expectedUser = new User(2,"Dima", "adminin", "a60d0091facdb884c7a923e04e95919256148302514591024242842515439190", "admin2@gmail.com", 18);
 
         //WHEN
         Boolean actual = repository.update(expectedUser);
@@ -94,7 +105,7 @@ public class JdbcUserRepositoryTest {
     @Test
     public void deleteTest(){
         //GIVEN
-        User user = new User(2,"Petia", "adminin", "admin", "admin2@gmail.com", 18);
+        User user = new User(2,"Petia", "adminin", "a60d0091facdb884c7a923e04e95919256148302514591024242842515439190", "admin2@gmail.com", 18);
         Collection<User> expected = Collections.emptyList();
 
         //WHEN
@@ -107,7 +118,7 @@ public class JdbcUserRepositoryTest {
     }
 
     @Test
-    public void grantRoleTest() throws IOException {
+    public void grantRoleTest() {
         //GIVEN
         RoleRepository roleRepository = new JdbcRoleRepository();
         User u = new User(2);
@@ -125,7 +136,7 @@ public class JdbcUserRepositoryTest {
     }
 
     @Test
-    public void revokeRoleTest() throws IOException {
+    public void revokeRoleTest() {
 //GIVEN
         RoleRepository roleRepository = new JdbcRoleRepository();
         User u = new User(1);

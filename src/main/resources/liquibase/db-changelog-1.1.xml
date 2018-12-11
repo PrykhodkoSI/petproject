@@ -27,23 +27,23 @@
             <column name="id" valueNumeric="1" />
             <column name="name" valueNumeric="'Vasia'" />
             <column name="surname" valueNumeric="'adminin'" />
-            <column name="password" valueNumeric="'admin'" />
+            <column name="password" valueNumeric="'a60d0091facdb884c7a923e04e95919256148302514591024242842515439190'" />
             <column name="email" valueNumeric="'admin1@gmail.com'" />
             <column name="age" valueNumeric="'18'" />
         </insert>
         <insert tableName="users">
             <column name="id" valueNumeric="2" />
-            <column name="name" valueNumeric="'Petia'" />
-            <column name="surname" valueNumeric="'adminin'" />
-            <column name="password" valueNumeric="'admin'" />
-            <column name="email" valueNumeric="'admin2@gmail.com'" />
+            <column name="name" valueNumeric="'Client'" />
+            <column name="surname" valueNumeric="'Clientov'" />
+            <column name="password" valueNumeric="'a60d0091facdb884c7a923e04e95919256148302514591024242842515439190'" />
+            <column name="email" valueNumeric="'client@gmail.com'" />
             <column name="age" valueNumeric="'18'" />
         </insert>
         <insert tableName="users">
             <column name="id" valueNumeric="3" />
             <column name="name" valueNumeric="'Leha'" />
             <column name="surname" valueNumeric="'adminin'" />
-            <column name="password" valueNumeric="'admin'" />
+            <column name="password" valueNumeric="'a60d0091facdb884c7a923e04e95919256148302514591024242842515439190'" />
             <column name="email" valueNumeric="'admin3@gmail.com'" />
             <column name="age" valueNumeric="'18'" />
         </insert>
