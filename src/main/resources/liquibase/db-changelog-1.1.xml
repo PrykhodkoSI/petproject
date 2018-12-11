@@ -233,10 +233,19 @@
             <column name="id" valueNumeric="40" />
             <column name="name" valueNumeric="'Станислав'" />
             <column name="surname" valueNumeric="'Приходько'" />
-            <column name="password" valueNumeric="'d782a23ba7dc085babf3d0a86e7b82a856311024829147210889186'" />
+            <column name="password" valueNumeric="'a60d0091facdb884c7a923e04e95919256148302514591024242842515439190'" />
             <column name="email" valueNumeric="'prykhodko.s.i@gmail.com'" />
             <column name="age" valueNumeric="'20'" />
         </insert>
+        <insert tableName="users">
+            <column name="id" valueNumeric="41" />
+            <column name="name" valueNumeric="'Manager'" />
+            <column name="surname" valueNumeric="'Managerov'" />
+            <column name="password" valueNumeric="'a60d0091facdb884c7a923e04e95919256148302514591024242842515439190'" />
+            <column name="email" valueNumeric="'manager@gmail.com'" />
+            <column name="age" valueNumeric="'28'" />
+        </insert>
+
         <insert tableName="users_roles">
             <column name="id" valueNumeric="40" />
             <column name="user_id" valueNumeric="40" />
@@ -250,6 +259,11 @@
         <insert tableName="users_roles">
             <column name="id" valueNumeric="42" />
             <column name="user_id" valueNumeric="40" />
+            <column name="role_id" valueNumeric="3" />
+        </insert>
+        <insert tableName="users_roles">
+            <column name="id" valueNumeric="43" />
+            <column name="user_id" valueNumeric="41" />
             <column name="role_id" valueNumeric="3" />
         </insert>
         <insert tableName="booking_requests">
