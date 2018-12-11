@@ -25,14 +25,14 @@
         </encoder>
     </appender>
 
-    <logger name="com.epam.rd.june2018.session" level="error"/>
+    <logger name="com.prykhodkosi.petproject.servletbased.hotel" level="error"/>
 
-    <logger name="com.epam.rd.june2018.session" level="TRACE"
+    <logger name="com.prykhodkosi.petproject.servletbased.hotel" level="TRACE"
             additivity="false">
         <appender-ref ref="console" />
     </logger>
 
-    <logger name="com.epam.rd.june2018.session" level="debug" additivity="false">
+    <logger name="com.prykhodkosi.petproject.servletbased.hotel" level="debug" additivity="false">
         <appender-ref ref="file" />
     </logger>
 

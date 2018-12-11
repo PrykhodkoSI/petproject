@@ -1,10 +1,12 @@
 # Hotel
 * Init database (create database {db.name};)
-* Fill liquibase.properties for main and for test (url, driver, username, password)
+* Set env variable DB_PASSWORD
+* Fill db.properties for main and for test (url, driver, username, password)
+* Setup properties for liquibase plugin in pom
 * Run:
 > mvn liquibase:update
 * mvn clean install
-* Deploy "session.war" using Apache Tomcat 9.0.10
+* Deploy "hotel.war" using Apache Tomcat 9.0.10
 # Pages:   
     1) /login
     2) /rooms
