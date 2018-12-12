@@ -8,7 +8,7 @@
 * mvn clean install
 * Deploy "hotel.war" using Apache Tomcat 9.0.10
 
-#Test profiles with credentials:
+# Test profiles with credentials:
 * Client: Login(client@gmail.com), Password(SecurePassword@01)
 * Manager: Login(manager@gmail.com), Password(SecurePassword@01)
 * Client+Manager: Login(prykhodko.s.i@gmail.com), Password(SecurePassword@01)
